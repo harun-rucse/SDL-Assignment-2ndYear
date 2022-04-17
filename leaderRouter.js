@@ -94,13 +94,23 @@ leaderRouter.post('/:leaderId', (req, res) => {
 });
 
 // PUT localhost:3000/leaders/:leaderId
-leaderRouter.put('/:leaderId', (req, res) => {
-  res.status(200).send('Will Update the leader with id ' + req.params.leaderId);
+leaderRouter.put('/:leaderId', async (req, res) => {
+  try {
+    await Leader.findByIdAndUpdate(req.params.leaderId, req.body);
+    res.status(200).send('Will Update the leader with id ' + req.params.leaderId);
+  } catch (err) {
+    res.status(404).send('Some error occured and could not update the data');
+  }
 });
 
 // PATCH localhost:3000/leaders/:leaderId
-leaderRouter.patch('/:leaderId', (req, res) => {
-  res.status(200).send('Will Update the leader with id ' + req.params.leaderId);
+leaderRouter.patch('/:leaderId', async (req, res) => {
+  try {
+    await Leader.findByIdAndUpdate(req.params.leaderId, req.body);
+    res.status(200).send('Will Update the leader with id ' + req.params.leaderId);
+  } catch (err) {
+    res.status(404).send('Some error occured and could not update the data');
+  }
 });
 
 // DELETE localhost:3000/leaders/:leaderId
@@ -112,7 +122,7 @@ leaderRouter.delete('/:leaderId', async (req, res) => {
       return res.status(404).send('There are no items with id ' + req.params.leaderId);
     }
 
-    res.status(404).send('Deleting the leader of the employee with id ' + req.params.leaderId);
+    res.status(200).send('Deleting the leader of the employee with id ' + req.params.leaderId);
   } catch (err) {
     res.status(404).send('Some error occured and could not delete the data');
   }

@@ -95,13 +95,23 @@ promoRouter.post('/:promoId', (req, res) => {
 });
 
 // PUT localhost:3000/promotions/:promoId
-promoRouter.put('/:promoId', (req, res) => {
-  res.status(200).send('Will Update the promotion with id ' + req.params.promoId);
+promoRouter.put('/:promoId', async (req, res) => {
+  try {
+    await Promotion.findByIdAndUpdate(req.params.promoId, req.body);
+    res.status(200).send('Will Update the promotion with id ' + req.params.promoId);
+  } catch (err) {
+    res.status(404).send('Some error occured and could not update the data');
+  }
 });
 
 // PATCH localhost:3000/promotions/:promoId
-promoRouter.patch('/:promoId', (req, res) => {
-  res.status(200).send('Will Update the promotion with id ' + req.params.promoId);
+promoRouter.patch('/:promoId', async (req, res) => {
+  try {
+    await Promotion.findByIdAndUpdate(req.params.promoId, req.body);
+    res.status(200).send('Will Update the promotion with id ' + req.params.promoId);
+  } catch (err) {
+    res.status(404).send('Some error occured and could not update the data');
+  }
 });
 
 // DELETE localhost:3000/promotions/:promoId
@@ -113,7 +123,7 @@ promoRouter.delete('/:promoId', async (req, res) => {
       return res.status(404).send('There are no items with id ' + req.params.promoId);
     }
 
-    res.status(404).send('Deleting the promotion of the employee with id ' + req.params.promoId);
+    res.status(200).send('Deleting the promotion of the employee with id ' + req.params.promoId);
   } catch (err) {
     res.status(404).send('Some error occured and could not delete the data');
   }

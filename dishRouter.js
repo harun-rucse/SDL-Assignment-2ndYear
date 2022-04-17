@@ -1,5 +1,4 @@
 const express = require('express');
-const req = require('express/lib/request');
 const dishRouter = express.Router();
 
 // GET localhost:3000/dishes
