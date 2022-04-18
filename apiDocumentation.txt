@@ -1,0 +1,119 @@
+FORMAT: 1A
+HOST: http://localhost:3000/api
+
+# Dog API
+
+DogAPI is a simple API allowing CURD operation
+
+## Dog Collection [/dogs]
+
+### List All Dogs [GET]
+
+list of all dogs
+
++ Response 200 (application/json)
+
+        [
+            {
+                "_id": "625d0a7b405f8871f0c7c0cc",
+                "name": "dog name",
+                "id": 1,
+                "__v": 0
+            },
+            {
+                "_id": "625d0a94405f8871f0c7c0d0",
+                "name": "dog name 2",
+                "id": 2,
+                "__v": 0
+            },
+            {
+                "_id": "625d0a9a405f8871f0c7c0d2",
+                "name": "dog name 3",
+                "id": 3,
+                "__v": 0
+            }
+        ]
+
+### Create a New Dog [POST]
+
+Create a new dog
+
++ Request (application/json)
+
+        {
+            "name": "new dog name",
+            "id": 4
+        }
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            {
+                Successfully saved the data
+            }
+            
+            
+### Delete all Dogs [DELETE]
+
+Delete all dogs
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            {
+                Deleted all the elements from the database
+            }
+
+## Dog Collection [/dogs/2]
+### Update a Dog [PUT]
+
+Update a dog
+
++ Request (application/json)
+
+        {
+            "name": "update dog name",
+        }
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            {
+                Will Update the dog with id 2
+            }
+
+### Get a Dog [GET]
+
+Get a dog
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            {
+                "_id": "625d0a94405f8871f0c7c0d0",
+                "name": "dog name 2",
+                "id": 2,
+                "__v": 0
+            }
+
+
+### Delete a Dog [DELETE]
+
+Delete a dog
+
++ Response 200 (application/json)
+
+
+    + Body
+
+            {
+                Deleting the dog of the employee with id 2
+            }

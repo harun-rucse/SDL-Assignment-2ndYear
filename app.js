@@ -1,8 +1,6 @@
 const express = require('express');
 const dbConnection = require('./db');
-const dishRouter = require('./dishRouter');
-const promoRouter = require('./promoRouter');
-const leaderRouter = require('./leaderRouter');
+const dogRouter = require('./dogRouter');
 
 const app = express();
 
@@ -12,10 +10,7 @@ app.use(express.json());
 // Database connection
 dbConnection();
 
-// Routes define
-app.use('/dishes', dishRouter);
-app.use('/promotions', promoRouter);
-app.use('/leaders', leaderRouter);
+app.use('/api/dogs', dogRouter);
 
 // Server create
 app.listen(3000, () => {
